@@ -4,8 +4,8 @@ import { Layout, Row, Col, Image, Input, Space, Modal, Radio } from "antd";
 import "antd/dist/antd.css";
 import "../css/landing.css";
 import HeroImg from "../img/Graphic.png";
-import UserContext from '../context/userContext';
-import SpecialistContext from '../context/specialistContext';
+import UserContext from "../context/userContext";
+import SpecialistContext from "../context/specialistContext";
 import { set } from "mongoose";
 const { Search } = Input;
 const { Header, Content, Footer, Sider } = Layout;
@@ -13,28 +13,42 @@ const { Header, Content, Footer, Sider } = Layout;
 const Landing = () => {
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [modalText, setModalText] = React.useState(
-    "One appointment found! Dr Hazel Pinto (Endocrinologist)"
-  );
-
+  const [modalText, setModalText] = React.useState([]);
   const { userData, setUserData } = useContext(UserContext);
   const { specialist, setSpecialist } = useContext(SpecialistContext);
 
   const history = useHistory();
 
-  const showModal = () => {
+  const showModal = (value) => { 
     setVisible(true);
+    let specialists = [];
+    if(value === "toothache") {
+      specialists.push("Dentist");
+    } else if(value === "red eyes") {
+      specialists.push("General Physician");
+      specialists.push("Ophthalmologist");
+    } else if(value === "cough") {
+      specialists.push("General Physician");
+      specialists.push("ENT");
+    } else if(value === "rashes" || value === "dandruff") {
+      specialists.push("Dermatologist");
+    } else if(value === "depression") {
+      specialists.push("Psychiatrist");
+    }
+
+
+    let spArray = specialists.map((specialist) =>  
+        <Radio value={specialist} style={{ fontSize: "20px" }}>{specialist}</Radio> 
+    );
+    setModalText(spArray);  
   };
 
   const handleOk = () => {
-    setModalText(
-      "One appointment found!!  Dr Hazel Pinto ( Endochronologist )"
-    );
     setConfirmLoading(true);
     setTimeout(() => {
       setVisible(false);
       setConfirmLoading(false);
-      history.push("/yourAppointments");
+      history.push("/confirmAppointment");
     }, 2000);
   };
 
@@ -43,10 +57,10 @@ const Landing = () => {
     setVisible(false);
   };
 
-  useEffect(() => {
-    setSpecialist("gyna");
-    console.log(specialist);
-  }, [])
+  const onChange = (e) => {
+    setSpecialist(e.target.value);
+  };
+
 
   return (
     <div className="hero">
@@ -80,6 +94,7 @@ const Landing = () => {
               confirmLoading={confirmLoading}
               onCancel={handleCancel}
             >
+            <Radio.Group onChange={onChange}>
               <Space direction="vertical">
                 <h2
                   style={{
@@ -90,16 +105,10 @@ const Landing = () => {
                 >
                   Choose a Specialty
                 </h2>
-                <Radio value={1} style={{ fontSize: "20px" }}>
-                  Gyneanc
-                </Radio>
-                <Radio value={2} style={{ fontSize: "20px" }}>
-                  Option B
-                </Radio>
-                <Radio value={3} style={{ fontSize: "20px" }}>
-                  Option C
-                </Radio>
+                {modalText}
               </Space>
+            </Radio.Group>
+
             </Modal>
           </div>
         </Col>
