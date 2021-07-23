@@ -26,7 +26,7 @@ mongoose.connection.on("connected", (err, res) => {
   console.log("Mongoose is connected");
 });
 
-app.get("/api", (req, res) => {
+app.get("/api", async (req, res) => {
   const user = await Doctor.find({});
   if (!user) {
     return res.status(400).json({ msg: "User does not exist" });
@@ -42,7 +42,7 @@ app.get("/appointment", async (req, res) => {
   return res.json(user);
 });
 
-app.get("/login", (req, res) => {
+app.get("/login", async (req, res) => {
   const user = await Patient.find({});
   if (!user) {
     return res.status(400).json({ msg: "User does not exist" });
