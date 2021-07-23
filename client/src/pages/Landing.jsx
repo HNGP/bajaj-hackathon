@@ -43,10 +43,14 @@ const Landing = () => {
     setVisible(false);
   };
 
-  useEffect(() => {
-    setSpecialist("gyna");
-    console.log(specialist);
-  }, [])
+  const onChange = e => {
+    setSpecialist(e.target.value);
+  }
+
+  // useEffect(() => {
+  //   setSpecialist("gyna");
+  //   console.log(specialist);
+  // }, [])
 
   return (
     <div className="hero">
@@ -80,6 +84,7 @@ const Landing = () => {
               confirmLoading={confirmLoading}
               onCancel={handleCancel}
             >
+            <Radio.Group onChange={onChange}>
               <Space direction="vertical">
                 <h2
                   style={{
@@ -90,16 +95,17 @@ const Landing = () => {
                 >
                   Choose a Specialty
                 </h2>
-                <Radio value={1} style={{ fontSize: "20px" }}>
-                  Gyneanc
+                <Radio value={"Dermatologist"} style={{ fontSize: "20px" }}>
+                Dermatologist
                 </Radio>
-                <Radio value={2} style={{ fontSize: "20px" }}>
-                  Option B
+                <Radio value={"Psychiatrist"} style={{ fontSize: "20px" }}>
+                Psychiatrist
                 </Radio>
-                <Radio value={3} style={{ fontSize: "20px" }}>
-                  Option C
+                <Radio value={"Dentist"} style={{ fontSize: "20px" }}>
+                Dentist
                 </Radio>
               </Space>
+            </Radio.Group>
             </Modal>
           </div>
         </Col>
