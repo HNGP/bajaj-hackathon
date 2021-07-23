@@ -58,9 +58,28 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/patient/getappointment/:id", (req, res) => {
-  const start = "Book An Appointment";
+  const appId = req.params.id;
+  const appointment = await Appointment.findById(appId);
+  if (!appointment) {
+    return res.status(400).json({ msg: "Appointment does not exist" });
+  }
 
-  return res.json(start);
+  const doctor = await Doctor.findById(appointment.docid);
+  if (!doctor) {
+    return res.status(400).json({ msg: "Doctor does not exist" });
+  }
+
+  const patient = await Patient.findById(appointment.patientid);
+  if (!patient) {
+    return res.status(400).json({ msg: "Patient does not exist" });
+  }
+
+  const result = {
+    appointment: appointment,
+    doctorName: doctor.name,
+    patientName: patient.name,
+  };
+  return res.json(result);
 });
 
 app.get("/patient/cancelAppointment/:id", async (req, res) => {

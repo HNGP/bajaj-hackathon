@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { Row, Col } from "antd";
 import { AppointmentCard } from "../components/AppointmentCard";
 import "../css/appointment.css";
@@ -8,6 +9,7 @@ const Appointments = () => {
     name: "Dr Hazel Pinto",
     specialist: "Endocrinologist",
     rating: 4.36,
+
     startTime: "1:30pm",
     endTime: "2:00pm",
     imageurl:
