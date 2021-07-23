@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Patient = require("./models/patient.js");
 const Doctor = require("./models/doctor.js");
 const Appointment = require("./models/appointment.js");
+const { exec } = require('child_process');
 
 //middlewares
 app.use(express.json());
@@ -108,9 +109,16 @@ app.get("/patient/reschedule/:id", (req, res) => {
 });
 
 app.get("/chat", (req, res) => {
-  const start = "Chat karlo bhai";
+  
+  exec('npm run socket', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+  });
 
-  return res.json(start);
 });
 
 const port = 5000;
