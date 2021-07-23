@@ -1,13 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { Button, Layout, Row, Col, Image } from "antd";
+import { useHistory } from "react-router-dom";
+import { Layout, Row, Col, Image, Input, Space, Modal,} from "antd";
 import "antd/dist/antd.css";
 import "../css/landing.css";
 import HeroImg from "../img/Graphic.png";
-import { Input, Space } from "antd";
 const { Search } = Input;
 const { Header, Content, Footer, Sider } = Layout;
 
 const Landing = () => {
+  
+  const [visible, setVisible] = React.useState(false);
+  const [confirmLoading, setConfirmLoading] = React.useState(false);
+  const [modalText, setModalText] = React.useState('One appointment found!! Dr Hazel Pinto ( Endochronologist )');
+
+  const history = useHistory();
+  
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const handleOk = () => {
+    setModalText('One appointment found!! Dr Hazel Pinto ( Endochronologist )');
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setVisible(false);
+      setConfirmLoading(false);
+      history.push("/yourAppointments");
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    console.log('Clicked cancel button');
+    setVisible(false);
+  };
+
   return (
     <div className="hero">
       <Row>
@@ -32,7 +58,17 @@ const Landing = () => {
               enterButton="Search"
               size="large"
               color="purple"
+              onSearch={showModal}
             />
+            <Modal
+              title="Available Doctors"
+              visible={visible}
+              onOk={handleOk}
+              confirmLoading={confirmLoading}
+              onCancel={handleCancel}
+            >
+            <p style={{color: "black"}}>{modalText}</p>
+            </Modal>
           </div>
         </Col>
       </Row>
