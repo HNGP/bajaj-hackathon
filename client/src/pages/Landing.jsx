@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Layout, Row, Col, Image, Input, Space, Modal,} from "antd";
+import { Layout, Row, Col, Image, Input, Space, Modal } from "antd";
 import "antd/dist/antd.css";
 import "../css/landing.css";
 import HeroImg from "../img/Graphic.png";
@@ -8,19 +8,22 @@ const { Search } = Input;
 const { Header, Content, Footer, Sider } = Layout;
 
 const Landing = () => {
-  
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [modalText, setModalText] = React.useState('One appointment found!! Dr Hazel Pinto ( Endochronologist )');
+  const [modalText, setModalText] = React.useState(
+    "One appointment found! Dr Hazel Pinto (Endocrinologist)"
+  );
 
   const history = useHistory();
-  
+
   const showModal = () => {
     setVisible(true);
   };
 
   const handleOk = () => {
-    setModalText('One appointment found!! Dr Hazel Pinto ( Endochronologist )');
+    setModalText(
+      "One appointment found!!  Dr Hazel Pinto ( Endochronologist )"
+    );
     setConfirmLoading(true);
     setTimeout(() => {
       setVisible(false);
@@ -30,7 +33,7 @@ const Landing = () => {
   };
 
   const handleCancel = () => {
-    console.log('Clicked cancel button');
+    console.log("Clicked cancel button");
     setVisible(false);
   };
 
@@ -61,13 +64,20 @@ const Landing = () => {
               onSearch={showModal}
             />
             <Modal
-              title="Available Doctors"
               visible={visible}
               onOk={handleOk}
               confirmLoading={confirmLoading}
               onCancel={handleCancel}
             >
-            <p style={{color: "black"}}>{modalText}</p>
+              <h2
+                style={{
+                  color: "black",
+                  fontSize: "20px",
+                  marginBottom: "30px",
+                }}
+              >
+                {modalText}
+              </h2>
             </Modal>
           </div>
         </Col>

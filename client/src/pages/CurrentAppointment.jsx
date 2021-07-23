@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Card, Avatar, Button, Row, Col } from "antd";
 import "../css/CurrentAppointment.css";
 import OtherDocCard from "../components/OtherDocCard";
@@ -13,9 +14,8 @@ const CurrentAppointment = () => {
     endTime: "2:00pm",
     imageurl:
       "https://m.media-amazon.com/images/M/MV5BMTY1OTk1NzQwOF5BMl5BanBnXkFtZTgwNDUzNTA3NjE@._V1_UY1200_CR135,0,630,1200_AL_.jpg",
-    status: "Unvailable",
+    status: "Available",
   });
-
   const [otherDocs, setOtherDocs] = useState([
     {
       name: "Dr. Aboobacker",
@@ -35,6 +35,11 @@ const CurrentAppointment = () => {
       image: "https://pbs.twimg.com/media/EXT6-ZiWkAEgNy8.jpg",
     },
   ]);
+
+  const history = useHistory();
+  const goToChat = () => {
+    history.push("/chat");
+  };
 
   return (
     <div className="Container" style={{ marginTop: "-50px" }}>
@@ -67,7 +72,9 @@ const CurrentAppointment = () => {
           <>
             <Row>
               <Col>
-                <Button className="appointment-button">Chat Now</Button>
+                <Button className="appointment-button" onClick={goToChat}>
+                  Chat Now
+                </Button>
               </Col>
               <Col>
                 <Button className="appointment-button">Cancel</Button>

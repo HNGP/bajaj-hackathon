@@ -4,12 +4,14 @@
 .chatTitile {
   color: grey;
   font-family: Poppins;
+  font-size: 40px;
+  font-weight: 400;
 }
 .inputText {
   border-radius: 18px;
-  border: 1px solid black;
-  width: 70%;
-  /* margin-top: 600px; */
+  border: 1px solid #e3e3e3;
+
+  margin-top: 600px;
 }
 
 .divider {
@@ -35,6 +37,6 @@
 }
 
 .side {
+  width: 800px;
   display: flex;
-  align-self: flex-end;
 }

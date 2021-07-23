@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Button, Input, Divider } from "antd";
 import "../css/chat.css";
 import { ChatCard } from "../components/ChatCard";
-import { Input } from "antd";
-import { Divider } from "antd";
 
 const Chat = () => {
   const [appoint, setAppoint] = useState({
     name: "Dr Hazel Pinto",
     specialist: "Endocrinologist",
-    rating: 4.36,
+    rating: "Online",
 
     startTime: "1:30pm",
     endTime: "2:00pm",
@@ -21,7 +19,7 @@ const Chat = () => {
       <Row>
         <Col span={8}>
           <div className="container1">
-            <h2 className="chatTitile"> Instant Chat</h2>
+            <h1 className="chatTitile"> Instant Chat</h1>
             <br></br>
             <ChatCard
               name={appoint.name}
@@ -30,18 +28,29 @@ const Chat = () => {
               imageurl={appoint.imageurl}
               start={appoint.startTime}
               end={appoint.endTime}
+              style={{ marginLeft: "200px" }}
             />
           </div>
-          <Divider type={"vertical"} />
+          <Divider type={"vertical"} style={{ color: "black" }} />
         </Col>
         <Col span={12}>
-          <div className="side">
-            Chat
-            <br></br>
-            <p className="senderBubble">Bajaj!!</p>
-            <p className="recBubble">Hamara Bajaj</p>
-            <Input placeholder="Message" className="inputText" />
-          </div>
+          <Row>
+            <div className="side">
+              <Input placeholder="Message" className="inputText" />
+              <Button
+                type="primary"
+                style={{
+                  marginTop: "600px",
+                  borderRadius: "20px",
+                  backgroundColor: "#543B99",
+                  border: "none",
+                  marginLeft: "-50px",
+                }}
+              >
+                Send
+              </Button>
+            </div>
+          </Row>
         </Col>
       </Row>
     </div>
