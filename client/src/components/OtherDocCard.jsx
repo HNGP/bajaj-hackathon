@@ -1,31 +1,44 @@
 import React from "react";
-import { Card } from "antd";
+import { Card, Row, Col, Button, Avatar } from "antd";
 import "../css/otherCard.css";
-import { Button } from "antd";
+// import Avatar from "antd/lib/avatar/avatar";
 
 const OtherDocCard = (props) => {
-	return (
-		<>
-			<Card size="small" style={{ width: 280 }} className="otherCard">
-				<img
-					src="https://c.ndtvimg.com/2021-05/8uc4ac3o_hyderabad-doctor-charges-rs-10-twitter_625x300_31_May_21.jpeg"
-					alt="Doctor"
-					className="otherImage"
-				/>
-				<div className="text">
-					<p>
-						<span>
-							<strong> Dr. Aboobacker</strong>
-						</span>
-						<span id="price">₹800 Per Hour</span>
-					</p>
-					<Button type="primary" size={20} className="button">
-						Replace & Reschedule
-					</Button>
-				</div>
-			</Card>
-		</>
-	);
+  return (
+    <>
+      <Card
+        size="small"
+        style={{ width: 280, height: "110px" }}
+        className="otherCard"
+      >
+        <Col>
+          <Avatar src={props.imageurl} alt="Doctor" className="otherImage" />
+        </Col>
+        <Col>
+          <div className="text">
+            <h2
+              style={{ color: "black", marginTop: "-10px", marginLeft: "50px" }}
+            >
+              {props.doctorname}
+            </h2>
+            <p
+              style={{ color: "black", marginTop: "20px", marginLeft: "-3px" }}
+            >
+              {props.rate}
+            </p>
+            <Button
+              type="primary"
+              size={20}
+              className="button"
+              style={{ marginTop: "25px" }}
+            >
+              Replace & Reschedule
+            </Button>
+          </div>
+        </Col>
+      </Card>
+    </>
+  );
 };
 
 export default OtherDocCard;
