@@ -1,10 +1,19 @@
 import React from "react";
 import { Card, Image, Avatar, Row, Col } from "antd";
+import { useHistory } from "react-router-dom";
 import "../../src/App.css";
 import "../css/appointment.css";
+import CurrentAppointment from "../pages/CurrentAppointment";
 
 const { Meta } = Card;
+
 export const AppointmentCard = (props) => {
+  const history = useHistory();
+
+  const goToCurrent = () => {
+    history.push("/currentAppointment");
+  };
+
   return (
     <div className="AppointmentCard">
       <Row>
@@ -27,7 +36,7 @@ export const AppointmentCard = (props) => {
         </Col>
       </Row>
       <Row>
-        <div className="cardInset">
+        <div className="cardInset" onClick={goToCurrent}>
           <h1>
             {props.start} to {props.end}
           </h1>

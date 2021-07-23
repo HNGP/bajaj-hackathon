@@ -48,6 +48,8 @@ export const Nav = styled.nav`
   background-color: #fdfdfdfa;
   align-items: center;
   position: relative;
+  opacity: 70%;
+  backdrop-filter: blur(50px);
 
   @media (max-width: 678px) {
     width: 100vw;

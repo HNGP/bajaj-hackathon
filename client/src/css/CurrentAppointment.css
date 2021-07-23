@@ -1,7 +1,7 @@
 .Appointment-card {
   background-color: #543b99;
   width: 500px;
-  height: 300px;
+  height: 350px;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -9,4 +9,27 @@
   box-shadow: 11px 11px 22px #d9d9d9, -11px -11px 22px #ffffff;
   transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
+}
+
+.Appointment-card h1 {
+  color: white;
+}
+
+.appointment-button {
+  background-color: #3c2a6d;
+  border-radius: 25px;
+  margin-left: 30px;
+  height: 60px;
+  width: 200px;
+  color: white;
+  border: 0;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.OtherCardGroup {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 50px;
 }
