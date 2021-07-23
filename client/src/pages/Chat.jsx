@@ -24,6 +24,7 @@ const Chat = () => {
 			</Link>
 		</div>
 	);
+
 };
 
 export default Chat;
