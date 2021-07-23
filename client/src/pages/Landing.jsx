@@ -13,23 +13,37 @@ const { Header, Content, Footer, Sider } = Layout;
 const Landing = () => {
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [modalText, setModalText] = React.useState(
-    "One appointment found! Dr Hazel Pinto (Endocrinologist)"
-  );
-
+  const [modalText, setModalText] = React.useState([]);
   const { userData, setUserData } = useContext(UserContext);
   const { specialist, setSpecialist } = useContext(SpecialistContext);
 
   const history = useHistory();
 
-  const showModal = () => {
+  const showModal = (value) => { 
     setVisible(true);
+    let specialists = [];
+    if(value === "toothache") {
+      specialists.push("Dentist");
+    } else if(value === "red eyes") {
+      specialists.push("General Physician");
+      specialists.push("Ophthalmologist");
+    } else if(value === "cough") {
+      specialists.push("General Physician");
+      specialists.push("ENT");
+    } else if(value === "rashes" || value === "dandruff") {
+      specialists.push("Dermatologist");
+    } else if(value === "depression") {
+      specialists.push("Psychiatrist");
+    }
+
+
+    let spArray = specialists.map((specialist) =>  
+        <Radio value={specialist} style={{ fontSize: "20px" }}>{specialist}</Radio> 
+    );
+    setModalText(spArray);  
   };
 
   const handleOk = () => {
-    setModalText(
-      "One appointment found!!  Dr Hazel Pinto ( Endochronologist )"
-    );
     setConfirmLoading(true);
     setTimeout(() => {
       setVisible(false);
@@ -47,10 +61,6 @@ const Landing = () => {
     setSpecialist(e.target.value);
   };
 
-  // useEffect(() => {
-  //   setSpecialist("gyna");
-  //   console.log(specialist);
-  // }, [])
 
   return (
     <div className="hero">
@@ -84,28 +94,21 @@ const Landing = () => {
               confirmLoading={confirmLoading}
               onCancel={handleCancel}
             >
-              <Radio.Group onChange={onChange}>
-                <Space direction="vertical">
-                  <h2
-                    style={{
-                      color: "black",
-                      fontSize: "20px",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    Choose a Specialty
-                  </h2>
-                  <Radio value={"Dermatologist"} style={{ fontSize: "20px" }}>
-                    Dermatologist
-                  </Radio>
-                  <Radio value={"Psychiatrist"} style={{ fontSize: "20px" }}>
-                    Psychiatrist
-                  </Radio>
-                  <Radio value={"Dentist"} style={{ fontSize: "20px" }}>
-                    Dentist
-                  </Radio>
-                </Space>
-              </Radio.Group>
+            <Radio.Group onChange={onChange}>
+              <Space direction="vertical">
+                <h2
+                  style={{
+                    color: "black",
+                    fontSize: "20px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Choose a Specialty
+                </h2>
+                {modalText}
+              </Space>
+            </Radio.Group>
+
             </Modal>
           </div>
         </Col>
