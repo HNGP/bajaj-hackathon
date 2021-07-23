@@ -38,11 +38,3 @@
     transform: rotate(360deg);
   }
 }
-
-.card {
-  background-color:aliceblue;
-  width: fit-content;
-  border-radius: 1rem;
-  padding: 1rem 1rem;
-  transition: all .2s ease-in-out;
-}
