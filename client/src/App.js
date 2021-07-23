@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import logo from "./logo.svg";
 import "./App.css";
 import Chat from "./pages/Chat";
 import Appointments from "./pages/Appointments";
@@ -9,7 +8,7 @@ import Landing from "./pages/Landing";
 import io from "socket.io-client";
 
 const App = () => {
-	const [connected, setConnected] = useState("");
+	// const [connected, setConnected] = useState("");
 	const [state, setState] = useState({ message: "", name: "", room: "" });
 	const [chat, setChat] = useState([]);
 
@@ -38,6 +37,7 @@ const App = () => {
 					{/* <UserContext.Provider value={{ userData, setUserData }}> */}
 					<div className="Nav"></div>
 					<div className="container">
+						<button onClick={onMessageSubmit}> Send button</button>
 						<Switch>
 							<Route exact path="/" component={Landing} />
 							<Route path="/yourAppointments" component={Appointments} />
