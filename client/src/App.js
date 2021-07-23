@@ -1,33 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import logo from "./logo.svg";
+import "./App.css";
+import Chat from "./pages/Chat";
+import Appointments from "./pages/Appointments";
+import CurrentAppointent from "./pages/CurrentAppointment";
+import Landing from "./pages/Landing";
 
 const App = () => {
+  const [connected, setConnected] = useState("");
 
-  const [connected, setConnected] = useState('');
-
-  useEffect(() => {
-    const start = async () => {
-      const connect = await fetch('/api');
-      const response = await connect.json();
-      if(response) {
-        setConnected(response);
-        console.log(response);
-      }
-    }
-
-    start();
-  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {connected}
-        </p>
-      </header>
+      <div className="Content">
+        <BrowserRouter>
+          {/* <UserContext.Provider value={{ userData, setUserData }}> */}
+          <div className="Nav"></div>
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route path="/yourAppointments" component={Appointments} />
+
+              <Route path="/currentAppointment" component={CurrentAppointent} />
+              <Route path="/Chat" component={Chat} />
+            </Switch>
+          </div>
+          {/* </UserContext.Provider> */}
+        </BrowserRouter>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
