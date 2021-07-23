@@ -4,8 +4,8 @@ import { Layout, Row, Col, Image, Input, Space, Modal, Radio } from "antd";
 import "antd/dist/antd.css";
 import "../css/landing.css";
 import HeroImg from "../img/Graphic.png";
-import UserContext from '../context/userContext';
-import SpecialistContext from '../context/specialistContext';
+import UserContext from "../context/userContext";
+import SpecialistContext from "../context/specialistContext";
 import { set } from "mongoose";
 const { Search } = Input;
 const { Header, Content, Footer, Sider } = Layout;
@@ -48,7 +48,7 @@ const Landing = () => {
     setTimeout(() => {
       setVisible(false);
       setConfirmLoading(false);
-      history.push("/yourAppointments");
+      history.push("/confirmAppointment");
     }, 2000);
   };
 
@@ -57,14 +57,10 @@ const Landing = () => {
     setVisible(false);
   };
 
-  const onChange = e => {
+  const onChange = (e) => {
     setSpecialist(e.target.value);
-  }
+  };
 
-  // useEffect(() => {
-  //   setSpecialist("gyna");
-  //   console.log(specialist);
-  // }, [])
 
   return (
     <div className="hero">
@@ -110,17 +106,9 @@ const Landing = () => {
                   Choose a Specialty
                 </h2>
                 {modalText}
-                {/* <Radio value={modalText.r1} style={{ fontSize: "20px" }}>
-                {modalText.r1}
-                </Radio>
-                <Radio value={modalText.r2} style={{ fontSize: "20px" }}>
-                {modalText.r2}
-                </Radio>
-                <Radio value={modalText.r3} style={{ fontSize: "20px" }}>
-                {modalText.r3}
-                </Radio> */}
               </Space>
             </Radio.Group>
+
             </Modal>
           </div>
         </Col>
