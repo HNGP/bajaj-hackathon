@@ -1,0 +1,40 @@
+.blak h2 {
+  color: black;
+}
+.chatTitile {
+  color: grey;
+  font-family: Poppins;
+}
+.inputText {
+  border-radius: 18px;
+  border: 1px solid black;
+  width: 70%;
+  /* margin-top: 600px; */
+}
+
+.divider {
+  margin-top: 480px;
+  margin-bottom: -550px;
+  border: 1px solid #e3e3e3;
+}
+
+.senderBubble {
+  border-radius: 20px;
+  background: #674daf;
+  width: 10%;
+  height: 12%;
+  align-items: center;
+}
+.recBubble {
+  border-radius: 20px;
+  width: 20%;
+  background: #b6b3bf;
+  height: 12%;
+  align-items: center;
+  left: 0%;
+}
+
+.side {
+  display: flex;
+  align-self: flex-end;
+}
