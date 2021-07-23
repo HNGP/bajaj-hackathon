@@ -9,6 +9,7 @@ import io from "socket.io-client";
 import UserContext from './context/userContext';
 import SpecialistContext from './context/specialistContext';
 import Navbar from "./components/Navbar";
+import ChatRoom from "./pages/ChatRoom";
 
 const App = () => {
 	const [userData, setUserData] = useState({
@@ -58,7 +59,9 @@ const App = () => {
 							<Route path="/yourAppointments" component={Appointments} />
 
 							<Route path="/currentAppointment" component={CurrentAppointent} />
-							<Route path="/Chat" component={Chat} />
+							{/* <Route path="/Chat" component={Chat} /> */}
+							<Route exact path="/Chat" component={Chat} />
+							<Route exact path="/:roomId" component={ChatRoom} />
 						</Switch>
 					</div>
 					</SpecialistContext.Provider>

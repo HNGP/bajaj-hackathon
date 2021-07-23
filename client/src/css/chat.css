@@ -1,37 +1,31 @@
-.blak h2 {
-  color: black;
-}
-.chatTitile {
-  color: grey;
-  font-family: Poppins;
-  font-size: 40px;
-  font-weight: 400;
-}
-.inputText {
-  border-radius: 18px;
-  border: 1px solid #e3e3e3;
-
-  margin-top: 600px;
+.home-container {
+	position: fixed;
+	left: 10%;
+	right: 10%;
+	top: 50%;
+	transform: translate(0, -50%);
+	display: flex;
+	flex-direction: column;
 }
 
-.divider {
-  margin-top: 480px;
-  margin-bottom: -550px;
-  border: 1px solid #e3e3e3;
+.text-input-field {
+	padding: 24px 12px;
+	border-radius: 7px;
+	font-size: 24px;
 }
 
-.senderBubble {
-  border-radius: 20px;
-  background: #674daf;
-  width: 10%;
-  height: 12%;
-  align-items: center;
+.text-input-field:focus {
+	outline: none;
 }
-.recBubble {
-  border-radius: 20px;
-  width: 20%;
-  background: #b6b3bf;
-  height: 12%;
-  align-items: center;
-  left: 0%;
+
+.enter-room-button {
+	margin-top: 20px;
+	padding: 24px 12px;
+	font-size: 28px;
+	background: #543b99;
+	color: white;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 7px;
 }
