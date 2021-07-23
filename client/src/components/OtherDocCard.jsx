@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-import "./otherCard.css";
+import "../css/otherCard.css";
 import { Button } from "antd";
 
 const OtherDocCard = (props) => {
@@ -10,6 +10,7 @@ const OtherDocCard = (props) => {
 				<img
 					src="https://c.ndtvimg.com/2021-05/8uc4ac3o_hyderabad-doctor-charges-rs-10-twitter_625x300_31_May_21.jpeg"
 					alt="Doctor"
+					className="otherImage"
 				/>
 				<div className="text">
 					<p>

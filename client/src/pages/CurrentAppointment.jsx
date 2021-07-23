@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Avatar } from "antd";
 import "../css/CurrentAppointment.css";
-import OtherDocCard from "../components/OtherDocCard/OtherDocCard";
+import OtherDocCard from "../components/OtherDocCard";
 const { Meta } = Card;
 
 const CurrentAppointment = () => {
