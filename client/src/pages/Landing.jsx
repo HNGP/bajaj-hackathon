@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Layout, Row, Col, Image, Input, Space, Modal } from "antd";
+import { Layout, Row, Col, Image, Input, Space, Modal, Radio } from "antd";
 import "antd/dist/antd.css";
 import "../css/landing.css";
 import HeroImg from "../img/Graphic.png";
@@ -69,15 +69,26 @@ const Landing = () => {
               confirmLoading={confirmLoading}
               onCancel={handleCancel}
             >
-              <h2
-                style={{
-                  color: "black",
-                  fontSize: "20px",
-                  marginBottom: "30px",
-                }}
-              >
-                {modalText}
-              </h2>
+              <Space direction="vertical">
+                <h2
+                  style={{
+                    color: "black",
+                    fontSize: "20px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Choose a Specialty
+                </h2>
+                <Radio value={1} style={{ fontSize: "20px" }}>
+                  Gyneanc
+                </Radio>
+                <Radio value={2} style={{ fontSize: "20px" }}>
+                  Option B
+                </Radio>
+                <Radio value={3} style={{ fontSize: "20px" }}>
+                  Option C
+                </Radio>
+              </Space>
             </Modal>
           </div>
         </Col>
