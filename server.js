@@ -1,23 +1,53 @@
 const express = require("express");
+const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-
-const app = express();
+const Patient = require("./models/patient.js");
+const Doctor = require("./models/doctor.js");
+const Appointment = require("./models/appointment.js");
 
 //middlewares
 app.use(express.json());
 app.use(cors());
 
-app.get("/api", (req, res) => {
-  const start = "Front-end and backend connected";
+mongoose.connect(
+  "mongodb+srv://tbUser:tbUserPass@cluster0.ccwyq.mongodb.net/bajaj?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  }
+);
+mongoose.connection.on("error", (err) => {
+  console.log("err", err);
+});
+mongoose.connection.on("connected", (err, res) => {
+  console.log("Mongoose is connected");
+});
 
-  return res.json(start);
+app.get("/api", (req, res) => {
+  const user = await Doctor.find({});
+  if (!user) {
+    return res.status(400).json({ msg: "User does not exist" });
+  }
+  return res.json(user);
+});
+
+app.get("/appointment", async (req, res) => {
+  const user = await Appointment.findById("60f9709cab377a8c32e82c5d");
+  if (!user) {
+    return res.status(400).json({ msg: "User does not exist" });
+  }
+  return res.json(user);
 });
 
 app.get("/login", (req, res) => {
-  const start = "The Login Page";
-
-  return res.json(start);
+  const user = await Patient.find({});
+  if (!user) {
+    return res.status(400).json({ msg: "User does not exist" });
+  }
+  return res.json(user);
 });
 
 app.get("/logout", (req, res) => {
