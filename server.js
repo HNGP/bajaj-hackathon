@@ -107,8 +107,8 @@ app.get("/patient/reschedule/:id", (req, res) => {
   return res.json(start);
 });
 
-app.get("/patient/getappointment/:id", (req, res) => {
-  const start = "Book An Appointment";
+app.get("/chat", (req, res) => {
+  const start = "Chat karlo bhai";
 
   return res.json(start);
 });
