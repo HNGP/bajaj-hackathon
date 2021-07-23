@@ -24,18 +24,6 @@
       "fees": 600
     },
     {
-      "id": 2,
-      "name": "Abdul Bari",
-      "specialization": "General Physician",
-      "onlineStatus": "Y",
-      "age": 32,
-      "photo": "https://randomuser.me/api/portraits/men/21.jpg",
-      "rating": 4.7,
-      "experience": 8,
-      "languages": ["English", "Hindi", "Urdu"],
-      "fees": 300
-    },
-    {
       "id": 3,
       "name": "Kunal Kamra",
       "specialization": "Psychiatrist",
