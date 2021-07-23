@@ -6,10 +6,21 @@ import Appointments from "./pages/Appointments";
 import CurrentAppointent from "./pages/CurrentAppointment";
 import Landing from "./pages/Landing";
 import io from "socket.io-client";
+import UserContext from './context/userContext';
+import SpecialistContext from './context/specialistContext';
 import Navbar from "./components/Navbar";
 
 const App = () => {
-	// const [connected, setConnected] = useState("");
+	const [userData, setUserData] = useState({
+		name: "Rahul",
+		number: 9876543210,
+		age: 42,
+		sex: "M",
+		blood_type: "O+ve",
+		height: "150cm",
+		allergies: "none",
+	  });
+	const [specialist, setSpecialist] = useState("");
 	const [state, setState] = useState({ message: "", name: "", room: "" });
 	const [chat, setChat] = useState([]);
 
@@ -35,7 +46,8 @@ const App = () => {
 		<div className="App">
 			<div className="Content">
 				<BrowserRouter>
-					{/* <UserContext.Provider value={{ userData, setUserData }}> */}
+					<UserContext.Provider value={{ userData, setUserData }}>
+					<SpecialistContext.Provider value={{ specialist, setSpecialist }}>
 					<div className="Nav">
 						<Navbar />
 					</div>
@@ -49,7 +61,8 @@ const App = () => {
 							<Route path="/Chat" component={Chat} />
 						</Switch>
 					</div>
-					{/* </UserContext.Provider> */}
+					</SpecialistContext.Provider>
+					</UserContext.Provider>
 				</BrowserRouter>
 			</div>
 		</div>
