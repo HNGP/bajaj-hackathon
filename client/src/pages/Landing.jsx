@@ -4,8 +4,8 @@ import { Layout, Row, Col, Image, Input, Space, Modal, Radio } from "antd";
 import "antd/dist/antd.css";
 import "../css/landing.css";
 import HeroImg from "../img/Graphic.png";
-import UserContext from '../context/userContext';
-import SpecialistContext from '../context/specialistContext';
+import UserContext from "../context/userContext";
+import SpecialistContext from "../context/specialistContext";
 import { set } from "mongoose";
 const { Search } = Input;
 const { Header, Content, Footer, Sider } = Layout;
@@ -34,7 +34,7 @@ const Landing = () => {
     setTimeout(() => {
       setVisible(false);
       setConfirmLoading(false);
-      history.push("/yourAppointments");
+      history.push("/confirmAppointment");
     }, 2000);
   };
 
@@ -43,9 +43,9 @@ const Landing = () => {
     setVisible(false);
   };
 
-  const onChange = e => {
+  const onChange = (e) => {
     setSpecialist(e.target.value);
-  }
+  };
 
   // useEffect(() => {
   //   setSpecialist("gyna");
@@ -84,28 +84,28 @@ const Landing = () => {
               confirmLoading={confirmLoading}
               onCancel={handleCancel}
             >
-            <Radio.Group onChange={onChange}>
-              <Space direction="vertical">
-                <h2
-                  style={{
-                    color: "black",
-                    fontSize: "20px",
-                    marginBottom: "10px",
-                  }}
-                >
-                  Choose a Specialty
-                </h2>
-                <Radio value={"Dermatologist"} style={{ fontSize: "20px" }}>
-                Dermatologist
-                </Radio>
-                <Radio value={"Psychiatrist"} style={{ fontSize: "20px" }}>
-                Psychiatrist
-                </Radio>
-                <Radio value={"Dentist"} style={{ fontSize: "20px" }}>
-                Dentist
-                </Radio>
-              </Space>
-            </Radio.Group>
+              <Radio.Group onChange={onChange}>
+                <Space direction="vertical">
+                  <h2
+                    style={{
+                      color: "black",
+                      fontSize: "20px",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    Choose a Specialty
+                  </h2>
+                  <Radio value={"Dermatologist"} style={{ fontSize: "20px" }}>
+                    Dermatologist
+                  </Radio>
+                  <Radio value={"Psychiatrist"} style={{ fontSize: "20px" }}>
+                    Psychiatrist
+                  </Radio>
+                  <Radio value={"Dentist"} style={{ fontSize: "20px" }}>
+                    Dentist
+                  </Radio>
+                </Space>
+              </Radio.Group>
             </Modal>
           </div>
         </Col>

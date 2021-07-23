@@ -24,7 +24,7 @@ const OtherDocCard = (props) => {
             <p
               style={{ color: "black", marginTop: "20px", marginLeft: "-3px" }}
             >
-              {props.rate}
+              ₹{props.rate}
             </p>
             <Button
               type="primary"
