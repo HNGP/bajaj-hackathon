@@ -8,6 +8,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
+    "socket": "node chatServer.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "HerdNerd",
@@ -17,7 +18,10 @@
     "concurrently": "^6.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.13.3"
+    "mongoose": "^5.13.3",
+    "react-router-dom": "^5.2.0",
+    "socket.io": "^4.1.3",
+    "socket.io-client": "^4.1.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
