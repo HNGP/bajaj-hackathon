@@ -62,10 +62,43 @@ app.get("/patient/getappointment/:id", (req, res) => {
   return res.json(start);
 });
 
-app.get("/patient/cancelappointment/:id", (req, res) => {
-  const start = "Cancel An Appointment";
+app.get("/patient/cancelAppointment/:id", async (req, res) => {
+  let appid = req.params.id;
+  const user = await Appointment.findOneAndUpdate(
+    { _id: appid },
+    { status: "inactive" }
+  );
+  if (!user) {
+    return res.status(400).json({ msg: "Appointment does not exist" });
+  }
+  const patient = await Patient.findOne({ _id: user.patientid });
+  const doctor = await Doctor.findOne({ _id: user.docid });
+  if (!patient) {
+    return res.status(400).json({ msg: "Patient does not exist" });
+  } else {
+    Patient.findOneAndUpdate(
+      { _id: user.patientid },
+      { $pull: { appointments: { appointmentid: appid } } },
+      { new: true },
+      function (err) {
+        if (err) {
+          console.log(err);
+        }
+      }
+    );
+    Doctor.findOneAndUpdate(
+      { _id: user.docid },
+      { $pull: { appointments: { appointmentid: appid } } },
+      { new: true },
+      function (err) {
+        if (err) {
+          console.log(err);
+        }
+      }
+    );
+  }
 
-  return res.json(start);
+  return res.json(doctor);
 });
 
 app.get("/patient/reschedule/:id", (req, res) => {
