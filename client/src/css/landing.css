@@ -1,0 +1,50 @@
+.hero {
+  min-width: 100%;
+  position: absolute;
+}
+
+.content-bg {
+  padding-top: 200px;
+  color: #674daf;
+}
+
+.content-bg h1 {
+  margin-top: -120px;
+  font-size: 200px;
+  font-weight: 700;
+  padding-left: 140px;
+  font-size: 100px;
+  width: 700px;
+  color: #674daf;
+}
+
+.content-bg h2 {
+  padding-left: 150px;
+  font-size: 100px;
+  font-weight: 400;
+  color: #674daf;
+}
+
+.HeroBanner {
+  z-index: -20;
+  right: 0;
+  position: fixed;
+  padding-right: 0;
+}
+
+.SearchBarDiv {
+  padding: 150px;
+}
+
+.Card-Alt {
+  width: 200px;
+  height: 200px;
+  background: rgba(215, 215, 215, 0.69);
+  border-radius: 20px;
+}
+
+.cardGroup {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 50px;
+}

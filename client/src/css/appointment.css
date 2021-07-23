@@ -1,0 +1,50 @@
+.AppointmentCard {
+  background-color: #543b99;
+  width: 500px;
+  height: 300px;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  box-shadow: 11px 11px 22px #d9d9d9, -11px -11px 22px #ffffff;
+  transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+}
+
+.AppointmentCard h1,
+p,
+h2 {
+  color: white;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: -24px;
+  margin-left: 20px;
+}
+
+.Container {
+  padding-left: 150px;
+  padding-top: 100px;
+}
+
+.Container h1 {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.AppointmentCard:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 9px 9px 16px #d9d9d9, -9px -9px 16px #ffffff;
+  box-shadow: 21px 21px 42px #d9d9d9, -21px -21px 42px #ffffff;
+}
+
+.cardInset {
+  background-color: #3c2a6d;
+  border-radius: 25px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  width: 430px;
+}
+
+.cardInset h1 {
+  padding-bottom: 10px;
+}

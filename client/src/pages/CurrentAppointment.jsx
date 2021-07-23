@@ -2,12 +2,14 @@ import React from "react";
 import { Card, Avatar } from 'antd';
 import { PromiseProvider } from "mongoose";
 import '../css/CurrentAppointment.css';
+import OtherDocCard from "../components/OtherDocCard/OtherDocCard";
 
 const { Meta } = Card;
 
 const CurrentAppointment = () => {
   const ab = "unavailable";
   return(
+    <>
   <Card
     className="Appointment-card"
     hoverable
@@ -42,7 +44,10 @@ const CurrentAppointment = () => {
     </>
     }
   </Card>
+<div>
+			<OtherDocCard />
+		</div>
+</>
 );
-};
 
 export default CurrentAppointment;
