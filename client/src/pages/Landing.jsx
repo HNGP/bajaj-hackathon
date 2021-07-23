@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Layout, Row, Col, Image, Input, Space, Modal, Radio } from "antd";
 import "antd/dist/antd.css";
 import "../css/landing.css";
 import HeroImg from "../img/Graphic.png";
+import UserContext from '../context/userContext';
+import SpecialistContext from '../context/specialistContext';
+import { set } from "mongoose";
 const { Search } = Input;
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -13,6 +16,9 @@ const Landing = () => {
   const [modalText, setModalText] = React.useState(
     "One appointment found! Dr Hazel Pinto (Endocrinologist)"
   );
+
+  const { userData, setUserData } = useContext(UserContext);
+  const { specialist, setSpecialist } = useContext(SpecialistContext);
 
   const history = useHistory();
 
@@ -36,6 +42,11 @@ const Landing = () => {
     console.log("Clicked cancel button");
     setVisible(false);
   };
+
+  useEffect(() => {
+    setSpecialist("gyna");
+    console.log(specialist);
+  }, [])
 
   return (
     <div className="hero">
