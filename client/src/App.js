@@ -8,6 +8,7 @@ import UserContext from "./context/userContext";
 import SpecialistContext from "./context/specialistContext";
 import Navbar from "./components/Navbar";
 import ChatRoom from "./pages/ChatRoom";
+import Payments from "./pages/Payments";
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -20,6 +21,7 @@ const App = () => {
     allergies: "none",
   });
   const [specialist, setSpecialist] = useState("");
+
   return (
     <div className="App">
       <div className="Content">
@@ -30,12 +32,15 @@ const App = () => {
                 <Navbar />
               </div>
               <div className="container">
+
                 <Switch>
                   <Route exact path="/" component={Landing} />
+                      <Route path="/payment" component={Payments} />
                   <Route
                     path="/confirmAppointment"
                     component={CurrentAppointent}
                   />
+
                   <Route exact path="/Chat" component={Chat} />
                   <Route exact path="/:roomId" component={ChatRoom} />
                 </Switch>
