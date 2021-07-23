@@ -7,6 +7,7 @@ import CurrentAppointent from "./pages/CurrentAppointment";
 import Landing from "./pages/Landing";
 import io from "socket.io-client";
 import Navbar from "./components/Navbar";
+import ChatRoom from "./pages/ChatRoom";
 
 const App = () => {
 	// const [connected, setConnected] = useState("");
@@ -46,7 +47,9 @@ const App = () => {
 							<Route path="/yourAppointments" component={Appointments} />
 
 							<Route path="/currentAppointment" component={CurrentAppointent} />
-							<Route path="/Chat" component={Chat} />
+							{/* <Route path="/Chat" component={Chat} /> */}
+							<Route exact path="/Chat" component={Chat} />
+							<Route exact path="/:roomId" component={ChatRoom} />
 						</Switch>
 					</div>
 					{/* </UserContext.Provider> */}
