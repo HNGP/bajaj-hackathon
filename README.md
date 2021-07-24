@@ -11,4 +11,4 @@ UI Design Library - Ant Design and (tons of custom CSS)
 ```npm install
 npm run client-install
 npm run dev
-node chatServer.js```
+node chatServer.js
