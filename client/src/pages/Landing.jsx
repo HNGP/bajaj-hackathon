@@ -19,28 +19,29 @@ const Landing = () => {
 
   const history = useHistory();
 
-  const showModal = (value) => { 
+  const showModal = (value) => {
     setVisible(true);
     let specialists = [];
-    if(value === "toothache") {
+    if (value === "toothache") {
       specialists.push("Dentist");
-    } else if(value === "red eyes") {
+    } else if (value === "red eyes") {
       specialists.push("General Physician");
       specialists.push("Ophthalmologist");
-    } else if(value === "cough") {
+    } else if (value === "cough") {
       specialists.push("General Physician");
       specialists.push("ENT");
-    } else if(value === "rashes" || value === "dandruff") {
+    } else if (value === "rashes" || value === "dandruff") {
       specialists.push("Dermatologist");
-    } else if(value === "depression") {
+    } else if (value === "depression") {
       specialists.push("Psychiatrist");
     }
 
-
-    let spArray = specialists.map((specialist) =>  
-        <Radio value={specialist} style={{ fontSize: "20px" }}>{specialist}</Radio> 
-    );
-    setModalText(spArray);  
+    let spArray = specialists.map((specialist) => (
+      <Radio value={specialist} style={{ fontSize: "20px" }}>
+        {specialist}
+      </Radio>
+    ));
+    setModalText(spArray);
   };
 
   const handleOk = () => {
@@ -60,7 +61,6 @@ const Landing = () => {
   const onChange = (e) => {
     setSpecialist(e.target.value);
   };
-
 
   return (
     <div className="hero">
@@ -94,27 +94,31 @@ const Landing = () => {
               confirmLoading={confirmLoading}
               onCancel={handleCancel}
             >
-            <Radio.Group onChange={onChange}>
-              <Space direction="vertical">
-                <h2
-                  style={{
-                    color: "black",
-                    fontSize: "20px",
-                    marginBottom: "10px",
-                  }}
-                >
-                  Choose a Specialty
-                </h2>
-                {modalText}
-              </Space>
-            </Radio.Group>
-
+              <div style={{ paddingLeft: "30px" }}>
+                <Radio.Group onChange={onChange}>
+                  <Space direction="vertical">
+                    <h2
+                      style={{
+                        color: "black",
+                        fontSize: "20px",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      We found multiple doctors. Choose a Specialty
+                    </h2>
+                    {modalText}
+                    <p>We'll automatically assign the best doctor for you!</p>
+                  </Space>
+                </Radio.Group>
+              </div>
             </Modal>
           </div>
         </Col>
       </Row>
       <Row style={{ paddingLeft: "150px" }}>
-        <h2>Browse by specialties</h2>
+        <h2 style={{ color: "black", fontSize: "30px", marginLeft: "10px" }}>
+          Browse by specialties
+        </h2>
       </Row>
       <Row style={{ paddingLeft: "150px", paddingTop: "50px" }}>
         <div className="cardGroup">

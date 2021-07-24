@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card, Avatar, Button, Row, Col } from "antd";
 import { SendOutlined } from "@ant-design/icons";
-
+import DoctorContext from "../context/DoctorContext";
 import "../css/ChatRoom.css";
+
 import { ChatCard } from "../components/ChatCard";
 import useChat from "../useChat";
 
@@ -10,15 +11,16 @@ const ChatRoom = (props) => {
   const { roomId } = props.match.params;
   const { messages, sendMessage } = useChat(roomId);
   const [newMessage, setNewMessage] = React.useState("");
-  const [appoint, setAppoint] = useState({
-    name: "Dr Hazel Pinto",
-    specialist: "Endocrinologist",
-    rating: "Online",
-    startTime: "1:30pm",
-    endTime: "2:00pm",
-    imageurl:
-      "https://m.media-amazon.com/images/M/MV5BMTY1OTk1NzQwOF5BMl5BanBnXkFtZTgwNDUzNTA3NjE@._V1_UY1200_CR135,0,630,1200_AL_.jpg",
-  });
+  const { doctorContext, setDoctorContext } = useContext(DoctorContext);
+  // const [doctorContext, setdoctorContext] = useState({
+  //   name: "Dr Hazel Pinto",
+  //   specialist: "Endocrinologist",
+  //   rating: "Online",
+  //   startTime: "1:30pm",
+  //   endTime: "2:00pm",
+  //   imageurl:
+  //     "https://m.media-amazon.com/images/M/MV5BMTY1OTk1NzQwOF5BMl5BanBnXkFtZTgwNDUzNTA3NjE@._V1_UY1200_CR135,0,630,1200_AL_.jpg",
+  // });
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
@@ -34,15 +36,16 @@ const ChatRoom = (props) => {
       <Col span={12}>
         {" "}
         <div className="container1">
-          <h1 className="chatTitile"> Instant Chat</h1>
+          <h1 className="chatTitle"> Instant Chat</h1>
           <br></br>
           <ChatCard
-            name={appoint.name}
-            specialist={appoint.specialist}
-            rating={appoint.rating}
-            imageurl={appoint.imageurl}
-            start={appoint.startTime}
-            end={appoint.endTime}
+            name={doctorContext.name}
+            specialist={doctorContext.specialist}
+            rating={doctorContext.rating}
+            fees={doctorContext.fees}
+            imageurl={doctorContext.imageurl}
+            start={doctorContext.startTime}
+            end={doctorContext.endTime}
             style={{ marginLeft: "200px" }}
           />
         </div>

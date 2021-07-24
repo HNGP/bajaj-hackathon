@@ -1,6 +1,5 @@
 .chat-room-container {
   position: fixed;
-
   right: 5%;
   top: 15%;
   bottom: 5%;
@@ -48,8 +47,8 @@
 }
 
 .my-message {
-  background-color: #e3e3e9;
-  color: black;
+  background-color: #543b99;
+  color: white;
   margin-left: auto;
   width: 30%;
   border-radius: 50px;
@@ -57,8 +56,8 @@
 }
 
 .received-message {
-  background-color: #543b99;
-  color: white;
+  background-color: #e3e3e9;
+  color: black;
   margin-right: auto;
   width: 30%;
   border-radius: 30px;
@@ -79,4 +78,18 @@
 .new-message-input-field,
 .send-message-button {
   border-color: #9a9a9a;
+}
+
+.container1 h1 {
+  font-weight: 600;
+  margin-left: 150px;
+  font-size: 40px;
+}
+
+.container1 {
+  text-align: left;
+}
+
+.cardInset1 {
+  text-align: center;
 }

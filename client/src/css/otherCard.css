@@ -1,37 +1,38 @@
 .otherCard {
-	border-radius: 20px;
-	background-color: #e3e3e3;
+  border-radius: 20px;
+  background-color: #e3e3e3;
 }
 
 .otherImage {
-	display: flex;
-	width: 80px;
-	height: 80px;
-	border-radius: 20px;
-	padding-bottom: 5px;
+  display: flex;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  padding-bottom: 5px;
 }
 
 p span {
-	display: block;
+  display: block;
 }
 
 .text {
-	margin-top: -80px;
-	margin-left: 25px;
+  margin-top: -90px;
+  margin-left: 80px;
+  text-align: left;
 }
 
 .button {
-	border-radius: 5px;
-	height: 25px;
-	display: flex;
-	align-items: center;
-	padding: 5px;
-	margin-left: 65px;
-	margin-top: -10px;
-	background-color: #674daf;
-	border-color: #674daf;
+  border-radius: 5px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-left: 100px;
+  margin-top: -10px;
+  background-color: #674daf;
+  border-color: #674daf;
 }
 
 #price {
-	margin-left: -10px;
+  margin-left: -10px;
 }

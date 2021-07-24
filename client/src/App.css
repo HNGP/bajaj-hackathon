@@ -43,3 +43,8 @@
   background-color: #674daf !important;
   color: white !important;
 }
+
+.ant-input-search-button {
+  background-color: #674daf !important;
+  border-color: #674daf !important;
+}

@@ -21,16 +21,16 @@ export const ChatCard = (props) => {
           ></Avatar>
         </Col>
         <Col>
-          <h1>{props.name}</h1>
-          <h2 style={{ marginLeft: "10px" }}>{props.specialist}</h2>
-          <h2 style={{ marginLeft: "10px" }}>{props.rating}</h2>
+          <div className="textInfo">
+            <h1>{props.name}</h1>
+            <h2>{props.specialist}</h2>
+            <h2>₹{props.fees}</h2>
+          </div>
         </Col>
       </Row>
       <Row>
         <div className="cardInset1">
-          <h1>
-            {props.start} to {props.end}
-          </h1>
+          <h1>End Session</h1>
         </div>
       </Row>
     </div>

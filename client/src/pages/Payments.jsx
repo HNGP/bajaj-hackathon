@@ -1,17 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { Card, Avatar, Button, Row, Col, Input, Divider } from "antd";
+import {
+  Card,
+  Avatar,
+  Button,
+  Row,
+  Col,
+  Input,
+  Divider,
+  Modal,
+  Result,
+} from "antd";
 import {
   CreditCardFilled,
   GoogleCircleFilled,
   AppleFilled,
 } from "@ant-design/icons";
 import "../css/payments.css";
+import Fees from "../context/fees";
 
 const Payments = () => {
+  const { fees, setFees } = useContext(Fees);
+  const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
+  const goToChat = () => {
+    history.push("/");
+  };
   return (
     <div className="PaymentLayout">
-      <h1>Confirm payment to Bajaj Finserv Health</h1>
+      <h1>Confirm payment of ₹{fees} to Bajaj Finserv Health</h1>
       <div className="PaymentCard">
         <Row>
           <CreditCardFilled
@@ -52,7 +69,22 @@ const Payments = () => {
           </Col>
         </Row>
         <Divider />
-        <Button className="PayButton">Pay</Button>
+        <Button className="PayButton" onClick={() => setShowModal(true)}>
+          Pay ₹{fees}
+        </Button>
+        <Modal
+          visible={showModal}
+          onOk={() => {
+            history.push("/23231321");
+          }}
+        >
+          <Result
+            status="success"
+            title="Successfully Booked Appointment"
+            subTitle="Click OK to continue to chat with the doctor."
+            extra={[]}
+          />
+        </Modal>
       </div>
     </div>
   );

@@ -14,6 +14,7 @@
   "author": "HerdNerd",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "antd": "^4.16.8",
     "concurrently": "^6.1.0",
     "cors": "^2.8.5",

@@ -3,11 +3,15 @@ import { useHistory } from "react-router-dom";
 import { Card, Avatar, Button, Row, Col } from "antd";
 import "../css/CurrentAppointment.css";
 import OtherDocCard from "../components/OtherDocCard";
+import Fees from "../context/fees";
 import SpecialistContext from "../context/specialistContext";
+import DoctorContext from "../context/DoctorContext";
 import { Doctor } from "../doctor";
 
 const CurrentAppointment = () => {
+  const { fees, setFees } = useContext(Fees);
   const { specialist, setSpecialist } = useContext(SpecialistContext);
+  const { doctorContext, setDoctorContext } = useContext(DoctorContext);
   let shortlist = [];
   Doctor.map((doc) => {
     if (doc.specialization === specialist) {
@@ -53,18 +57,24 @@ const CurrentAppointment = () => {
     specialist: max[0].specialization,
     rating: max[0].rating,
     imageurl: max[0].photo,
+    fees: max[0].fees,
+    languages: max[0].languages,
     status: "Available",
   });
 
+  setDoctorContext(appoint);
+
+  setFees(max[0].fees);
+
   const history = useHistory();
-  const goToChat = () => {
-    history.push("/chat");
+  const goToPay = () => {
+    history.push("/payment");
   };
 
   return (
     <div className="Container" style={{ marginTop: "-50px" }}>
       <Row>
-        <h1>Current Appointment</h1>
+        <h1>Your Appointment</h1>
       </Row>
       <div className="Appointment-card" hoverable>
         <Row>
@@ -80,20 +90,26 @@ const CurrentAppointment = () => {
             ></Avatar>
           </Col>
           <Col>
-            <h1 style={{ marginTop: "30px", marginLeft: "20px" }}>
-              {appoint.name}
-            </h1>
-            <h2 style={{ marginLeft: "-130px" }}>{appoint.status}</h2>
-            <h2 style={{ marginLeft: "20px" }}>Sunday, 5th August 2021</h2>
-            <h2 style={{ marginLeft: "-50px" }}>1:30pm - 2:00pm</h2>
+            <h1 style={{ marginTop: "30px" }}>{appoint.name}</h1>
+            <div className="docInfo">
+              <h2>{appoint.specialist}</h2>
+              <h2>{appoint.status}</h2>
+              <h2>Fees ₹{appoint.fees}</h2>
+              <h2>
+                Speaks
+                {appoint.languages.map((element, i) => {
+                  return " " + element;
+                })}
+              </h2>
+            </div>
           </Col>
         </Row>
         {appoint.status === "Available" ? (
           <>
             <Row>
               <Col>
-                <Button className="appointment-button" onClick={goToChat}>
-                  Chat Now
+                <Button className="appointment-button" onClick={goToPay}>
+                  Pay Now
                 </Button>
               </Col>
               <Col>
@@ -113,7 +129,7 @@ const CurrentAppointment = () => {
         )}
       </div>
       <Row style={{ marginTop: "50px" }}>
-        <h3>Other Available Doctors</h3>
+        <h3>Want to choose another doctor?</h3>
       </Row>
       <div className="OtherCardGroup">
         {otherDocs.map((user, i) => {
@@ -125,17 +141,6 @@ const CurrentAppointment = () => {
             />
           );
         })}
-
-        {/* <OtherDocCard
-          doctorname={otherDocs[1].name}
-          rate={otherDocs[1].price}
-          imageurl={otherDocs[1].image}
-        />
-        <OtherDocCard
-          doctorname={otherDocs[2].name}
-          rate={otherDocs[2].price}
-          imageurl={otherDocs[2].image}
-        /> */}
       </div>
     </div>
   );
