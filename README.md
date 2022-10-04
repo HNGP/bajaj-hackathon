@@ -8,6 +8,10 @@ HealthChat makes it very easy and intuitive for patients to connect to doctors, 
 - Video Demo: https://youtu.be/wW3Oc44Nfik
 - UI Walkthrough: https://www.behance.net/gallery/124072977/Instant-Doctor-Consultation-(Bajaj-Finserv-Health)/modules/705104627
 
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/3dc4d8124072977.60fc54374775c.png">
+
+
+
 Stack:
 React.js for (Frontend)
 Node, Express, Mongodb, Socket-IO (Backend)
